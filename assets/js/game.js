@@ -105,7 +105,7 @@ var startGame = function() {
         }
     }
 
-    //play again
+    //after the loop ends, player is either out of health or opponents, so run endgame function
     endGame();
 };
 
