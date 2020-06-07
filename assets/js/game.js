@@ -20,8 +20,17 @@
 //window.alert("Welcome to Robot Gladiators!");
 
 var fight = function(enemy) {
+    //keep track of who goes first
+    var isPlayerTurn = true;
+
+    //randomly change turn order
+    if (Math.random() > 0.5) {
+        isPlayerTurn = false;
+    }
     //repeat and execute as long as the enemy robot is alive
     while(enemy.health > 0 && playerInfo.health > 0) {
+        if (isPlayerTurn) {
+        
         //ask user if they'd like to fight or run
         var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
 
@@ -53,6 +62,7 @@ var fight = function(enemy) {
             //check enemy's health
             if (enemy.health <= 0) {
                 window.alert(enemy.name + " has died!");
+                playerInfo.money = playerInfo.money + 20;
                 break;
             } else {
                 window.alert(enemy.name + " still has " + enemy.health + " health left.");
@@ -73,6 +83,7 @@ var fight = function(enemy) {
             }
        } else {
         window.alert("You need to pick a valid option.  Try again!");
+        }
         }
     } 
 };
